@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 // app component imports
 import SiteContactBar from './site-contact-bar';
-import MainHeaderSection from './main-header-section';
 import NavigationBar from './navigation-bar';
+import MainHeaderContentSection from './main-header-content-section';
 
 
 /**
@@ -15,7 +15,7 @@ import NavigationBar from './navigation-bar';
  *  performance optimization may require
  */
 const SenseMainHeader = props => {
-
+    const {mainHeaderContent} = props;
     return (
         <Fragment>
             {/* site contact bar */}
@@ -25,12 +25,14 @@ const SenseMainHeader = props => {
             <NavigationBar/>
 
             {/* main header area */}
-            <MainHeaderSection/>
+            <MainHeaderContentSection content={mainHeaderContent}/>
         </Fragment>
     )
 }
 
 // props validation
-SenseMainHeader.propTypes = {}
+SenseMainHeader.propTypes = {
+    mainHeaderContent: PropTypes.element.isRequired
+}
 
 export default SenseMainHeader

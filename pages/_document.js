@@ -14,11 +14,14 @@ export default class SenseDocument extends Document {
         <Head>
 
           {/* app image preloading */}
-          <link rel='preload' as='image' href='/images/sense-header-bg-1.png'/>
+          <link rel='preload' as='image' href='/images/sense-header-bg1.png'/>
 
           {/* external font stylesheet */}
+          <link rel="preconnect" href="https://fonts.googleapis.com"/>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={true}/>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700&display=swap"/>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100, 200,300,400,500,700&display=swap"/>
+          <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet"></link>
         </Head>
         
         <body>

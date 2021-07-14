@@ -10,11 +10,7 @@ import { AppBar, Toolbar, Typography, Box, Container, Tabs, Tab} from '@material
 // custom component style
 const useStyles = makeStyles(theme => ({
     navbar:{
-        position: 'absolute',
-        background: 'transparent!important',
-        top: '74px',
-        left: 0,
-        right: 0,
+        ...theme.props.senseMainHeader.navbar,
     },
     innerContainer: {
         padding: '2px 15px'
@@ -47,7 +43,10 @@ const useStyles = makeStyles(theme => ({
 // navlink lists
 const navLinks = [
     {label: 'Home', href:'/'},
-    {label: 'About', href:'/about'}
+    {label: 'About', href:'/about'},
+    {label: 'Services', href:'#'},
+    {label: 'Blogs', href:'#'},
+    {label: 'Contact', href:'#'},
 ]
 
 

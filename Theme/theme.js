@@ -33,6 +33,27 @@ const theme = createTheme({
       lighterOpacity: 'rgba(#f5f5f5,.5)'
     }
   },
+  overrides:{
+    MuiCssBaseline:{
+      '@global':{
+        html:{
+          fontFamily:'Roboto!important',
+          WebkitFontSmooth:'auto',
+          MozFontSmooth:'auto',
+          fontSmooth:'auto',
+        },
+        '*::-webkit-scrollbar': {
+          width: '0.8em'
+        },
+        '*::-webkit-scrollbar-track': {
+          '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)'
+        },
+        '*::-webkit-scrollbar-thumb': {
+          backgroundColor: 'rgba(0,0,0,.1)',
+        }
+      }
+    }
+  },
 
   props: {
     senseMainHeader: senseMainHederTheme,
