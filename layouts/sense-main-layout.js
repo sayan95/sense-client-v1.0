@@ -33,7 +33,7 @@ const SenseMainLayout = (props) => {
 SenseMainLayout.propTypes = {
     pageTitle: PropTypes.string,
     pageDescription: PropTypes.string.isRequired,
-    mainHeaderContent: PropTypes.element.isRequired
+    mainHeaderContent: PropTypes.elementType.isRequired
 }
 
 export default SenseMainLayout;

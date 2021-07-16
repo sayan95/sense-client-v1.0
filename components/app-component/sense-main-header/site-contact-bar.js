@@ -12,20 +12,21 @@ import { makeStyles, useTheme } from '@material-ui/styles';
 const useStyles = makeStyles(theme => ({
     siteContactBar: {
         ...theme.props.senseMainHeader.siteContactBar,
-        [theme.breakpoints.down('sm')]:{
+        [theme.breakpoints.down('xs')]:{
             display: 'none'
         }
     },
     contactBarContainer:{
-        padding: '15px 65px',
-        fontFamily: 'Poppins',
-        fontWeight: 200,
+        ...theme.props.senseMainHeader.contactBarContainer,
         fontSize: theme.typography.fontSizes.small,
-        color: theme.palette.gray.light
+        color: theme.palette.gray.light,
+    },
+    socialbuttonContainer:{
+        [theme.breakpoints.down('sm')]:{
+            alignItems: 'flex-start',
+        }
     }
 }));    
-
-
 
 /**
  *  upper contact bar component in main heder
@@ -45,7 +46,7 @@ const SiteContactBar = () => {
                             <span> or email us: </span>
                             <span style={{ color: theme.palette.gray.lighter, fontWeight: 400 }}> support@sense.com</span>
                         </Grid>
-                        <Grid container justifyContent='flex-end' item md={4}>
+                        <Grid container justifyContent='flex-end' item md={4} classes={{ root: classes.socialbuttonContainer }}>
                             <SenseSocialButton href='#' icon='facebook' bgColor='rgba(255,255,255, .3)'/>
                             <SenseSocialButton href='#' icon='whatsapp' bgColor='rgba(255,255,255, .3)'/>
                             <SenseSocialButton href='#' icon='instagram' bgColor='rgba(255,255,255, .3)'/>

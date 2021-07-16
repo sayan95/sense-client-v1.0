@@ -5,13 +5,15 @@
  */
 
 export const senseMainHederTheme = {
+
+  // full main header theme
   mainHeaderConatiner: {
     position: "relative",
-    height: "625px",
+    height: "655px",
     width: "100%",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center",
+    backgroundPosition: "left bottom !important",
     zIndex: 0,
   },
   afterAndBefore: {
@@ -30,6 +32,8 @@ export const senseMainHederTheme = {
     bottom: 0,
     zIndex: -1,
   },
+
+  // mainheader site contact bar theme
   siteContactBar: {
     position: "absolute",
     zIndex: 3,
@@ -37,12 +41,17 @@ export const senseMainHederTheme = {
     left: 0,
     width: "100%",
   },
+  contactBarContainer:{
+    padding: '15px 65px',
+    fontFamily: 'Poppins',
+    fontWeight: 300,
+  },
+
+  // main-header navigation bar theme
   navbar: {
     position: "absolute",
-    top: "74px",
     right: 0,
     left: 0,
-    background: "transparent!important",
   },
   navbarBrand: {
     fontFamily: "Poppins",
@@ -60,5 +69,15 @@ export const senseMainHederTheme = {
     padding: "10px!important",
     minHeight: "1em!important",
     minWidth: "1.8em!important",
+  },
+
+  //  main-header content section theme
+  innerContainer:{
+    width: '100%',
+    height: '100%',
+    paddingRight: '65px',
+    paddingLeft: '65px',
+    marginRight: 'auto',
+    marginLeft: 'auto',
   },
 };

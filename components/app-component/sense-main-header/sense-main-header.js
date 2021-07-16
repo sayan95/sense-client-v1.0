@@ -16,6 +16,7 @@ import MainHeaderContentSection from './main-header-content-section';
  */
 const SenseMainHeader = props => {
     const {mainHeaderContent} = props;
+    const MainHeaderContent = mainHeaderContent;
     return (
         <Fragment>
             {/* site contact bar */}
@@ -25,14 +26,16 @@ const SenseMainHeader = props => {
             <NavigationBar/>
 
             {/* main header area */}
-            <MainHeaderContentSection content={mainHeaderContent}/>
+            <MainHeaderContentSection>
+                <MainHeaderContent/>
+            </MainHeaderContentSection>
         </Fragment>
     )
 }
 
 // props validation
 SenseMainHeader.propTypes = {
-    mainHeaderContent: PropTypes.element.isRequired
+    mainHeaderContent: PropTypes.elementType.isRequired
 }
 
 export default SenseMainHeader

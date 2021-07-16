@@ -13,7 +13,8 @@ const useStyles = makeStyles(theme => ({
         ...theme.props.senseMainHeader.mainHeaderConatiner,
         backgroundImage: "url('/images/sense-header-bg1.png')",
         [theme.breakpoints.down('md')]:{
-            backgroundPosition: 'top right center!important',
+            backgroundPosition: 'center center!important',
+            height: '720px'
         },
         "&:before":{
             ...theme.props.senseMainHeader.afterAndBefore,
@@ -30,21 +31,20 @@ const useStyles = makeStyles(theme => ({
     },
     overlay1:{
         ...theme.props.senseMainHeader.overlay,
-        opacity: .2,
+        opacity: .1,
         background: theme.palette.common.black
     },
     overlay2:{
         ...theme.props.senseMainHeader.overlay,
-        opacity: .54,
-        background: `linear-gradient(to bottom, ${theme.palette.primary.main} 0%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%)`
+        opacity: .74,
+        background: `linear-gradient(to bottom right , ${theme.palette.primary.main} 0%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0) 100%)`
     },
     innerContainer:{
-        width: '100%',
-        height: '100%',
-        paddingRight: '65px',
-        paddingLeft: '65px',
-        marginRight: 'auto',
-        marginLeft: 'auto',
+        ...theme.props.senseMainHeader.innerContainer,
+        [theme.breakpoints.down('xs')]:{
+            paddingLeft: '20px',
+            paddingRight: '20px',
+        }
     },
 }));
 
@@ -52,9 +52,8 @@ const useStyles = makeStyles(theme => ({
  *  large header panel in sense main header
  */
 const MainHeaderContentSection = props => {
-    const {content} = props;
+    const {children} = props;
     const classes = useStyles();
-    const Content = content;
 
     return (
         <Fragment>
@@ -63,7 +62,7 @@ const MainHeaderContentSection = props => {
                 <Box className={classes.overlay2}></Box>
 
                 <Container className={classes.innerContainer}>
-                    <Content/>
+                    {children}
                 </Container>
             </Box>
         </Fragment>
@@ -71,8 +70,6 @@ const MainHeaderContentSection = props => {
 }
 
 // props validation
-MainHeaderContentSection.propTypes = {
-    content: PropTypes.element.isRequired
-}
+MainHeaderContentSection.propTypes = {}
 
 export default MainHeaderContentSection;

@@ -8,34 +8,60 @@ import { PlayArrow } from '@material-ui/icons';
 
 //custom component styles
 const useStyles = makeStyles(theme => ({
-    welcomeNote:{
+    headingContainer:{
+        marginTop: '30px',
+        marginBottom: '15px',
+        [theme.breakpoints.down('md')]:{
+            marginTop: '20px',
+            marginBottom: 0
+        },
+    },
+    senseWelcomeNote:{
         fontFamily:'"Reenie Beanie", Ariel, Cursive',
         fontWeight: 'bold',
+        fontSize: theme.typography.fontSizes.extraLarge,
         color: theme.palette.primary.main,
-        marginBottom:'15px'
+        [theme.breakpoints.down('md')]:{
+            fontSize: theme.typography.fontSizes.large,     
+        },
     },
-    headingContainer:{
+    senseBizzMantra:{
         fontFamily: '"Poppins", Ariel, sans-serif',
         fontSize: '60px',
         fontWeight: 200,
         lineHeight: 1.2,
-        letterSpacing: '3px',
         display:'grid', 
         alignContent:'center',
+        letterSpacing: '3px',
         wordSpacing: '2px',
-        marginBottom: '15px',
-        color: theme.palette.common.white
+        color: theme.palette.common.white,
+        [theme.breakpoints.down('md')]:{
+            fontSize: '40px',
+            textAlign: 'jsutify'
+        },
     },
-    briefNote:{
+    senseBriefNote:{
         fontFamily: 'Poppins, Arial, sans-sarif',
         lineHeight: 1.8,
         display: 'block',
+        fontSize: '15px',
+        letterSpacing: '1px',
+        wordSpacing: 'no-wrap',
         marginBlockStart: '1em',
         marginBlockEnd: '1em',
         marginInlineStart: '0px',
         marginInlineEnd: '0px',
-        fontSize: '16px',
-        color: theme.palette.common.white,
+        color: theme.palette.gray.lighter,
+        [theme.breakpoints.down('sm')]:{
+            
+        }   
+    },
+    videoPlaycontainer:{
+        height: '100%',
+        [theme.breakpoints.down('xs')]:{
+            alignItems: 'flex-start',
+            height: 'auto'
+        },
     },
     playButton:{
         //position: 'relative',
@@ -70,7 +96,7 @@ const useStyles = makeStyles(theme => ({
 }));    
 
 /**
- *  This is the app main header's content 
+ *  This is the application index page's main header's content 
  *  This component is page specific 
  */
 const MainHederContent = () => {
@@ -79,26 +105,32 @@ const MainHederContent = () => {
     return (
         <Fragment>
             <Grid container style={{ height: '100%' }}>
-                <Grid container item md={6} sm={12} alignItems='center'>
-                    <Box component='div' style={{ marginBottom: '0'}}>
-                        <Typography variant='h5' classes={{ h5: classes.welcomeNote }}>
+                {/* Left pane of the content box */}
+                <Grid container item md={6} sm={9} xs={12} alignItems='center'>
+                    {/* Left pane of the content box */}
+                    <Box component='div' className={`animate__animated animate__fadeInUp ${classes.headingContainer}`}>
+                        <Typography variant='h5' classes={{ h5: classes.senseWelcomeNote }}>
                             Welcome to Sense
                         </Typography>
-                        <Typography variant='h3' classes={{ h3: classes.headingContainer }}>
-                            <span style={{ display:'block' }}>Bringing Mental</span>
-                            <span style={{ display:'block'}}>Health To All</span>
+                        <Typography variant='h3' classes={{ h3: classes.senseBizzMantra }}>
+                            Bringing Mental Health To All
                         </Typography>
-                        <Typography variant='body1' classes={{ body1:classes.briefNote }}>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                            Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, 
-                            Eum quasi quidem quibusdam.
+                        <Typography variant='body1' classes={{ body1:classes.senseBriefNote }}>
+                            Far far away, behind the word mountains, 
+                            far from the countries Vokalia and Consonantia, 
+                            there live the blind texts. Separated they live 
+                            in Bookmarksgrove.
                         </Typography>
                     </Box>
                 </Grid>
-                <Grid container item md={6} sm={12} alignItems='center' justifyContent='center'>
-                    <Fab component='a' href='#' color='primary' size='large' classes={{ root: classes.playButton }}>
-                        <PlayArrow style={{ fontSize: '30px' }}/>
-                    </Fab>
+                
+                {/* Right pane of the content box */}
+                <Grid item md={6} sm={3} xs={12}>
+                    <Box display='flex' alignItems='center' justifyContent='center' classes={{ root: classes.videoPlaycontainer }}>
+                        <Fab component='a' href='#' color='primary' size='large' classes={{ root: classes.playButton }}>
+                            <PlayArrow style={{ fontSize: '30px' }}/>
+                        </Fab>
+                    </Box>
                 </Grid>
             </Grid>
         </Fragment>
