@@ -2,9 +2,7 @@ import { createTheme } from '@material-ui/core/styles';
 import { blue } from '@material-ui/core/colors';
 
 // theme files imports
-import {senseMainHederTheme} from './sense-main-header-theme/sense-main-header-theme';
-import {senseTypographyTheme} from './sense-typography-theme/sense-typography-theme';
-import {senseSocialButtonTheme} from './sene-social-button-theme/sense-social-button-theme';
+import * as appTheme from './index';
 
 // Create a theme instance.
 const theme = createTheme({
@@ -56,12 +54,13 @@ const theme = createTheme({
   },
 
   props: {
-    senseMainHeader: senseMainHederTheme,
-    senseSocialButton: senseSocialButtonTheme,
+    senseMainHeader: appTheme.senseMainHederTheme,
+    senseBackdropNavMenu: appTheme.senseBackdropNavMenuTheme,
+    senseSocialButton: appTheme.senseSocialButtonTheme,
   },
 
   typography: {
-    fontSizes: senseTypographyTheme.fontSizes
+    fontSizes: appTheme.senseTypographyTheme.fontSizes
   }
 });
 

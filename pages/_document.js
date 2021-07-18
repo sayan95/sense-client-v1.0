@@ -7,7 +7,7 @@ import { ServerStyleSheets } from '@material-ui/core/styles';
 
 
 // custom application _document
-export default class SenseDocument extends Document {
+class SenseDocument extends Document {
   render() {
     return (
       <Html lang="en">
@@ -21,12 +21,9 @@ export default class SenseDocument extends Document {
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100, 200,300,400,500,700&display=swap"/>
           <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet"></link>
-          
-          {/* animation library */}
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-          
+
         </Head>
-        
+
         <body>
           <Main />
           <NextScript />
@@ -37,13 +34,14 @@ export default class SenseDocument extends Document {
 }
 
 SenseDocument.getInitialProps = async (ctx) => {
-  
+
   const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
 
   ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+      enhanceComponent: (Component) => Component,
     });
 
   const initialProps = await Document.getInitialProps(ctx);
@@ -52,4 +50,7 @@ SenseDocument.getInitialProps = async (ctx) => {
     ...initialProps,
     styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
   };
+  
 };
+
+export default SenseDocument;
