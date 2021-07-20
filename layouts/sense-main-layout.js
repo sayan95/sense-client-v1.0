@@ -12,18 +12,24 @@ import SenseMainHeader from '../components/app-component/sense-main-header/sense
  *  Wraps all the pages present in the front spa
  */
 const SenseMainLayout = (props) => {
-    const {pageTitle, pageDescription, children, mainHeaderContent} = props;
+    const {pageTitle, pageDescription, children} = props;
     
     return (
         <Fragment>
+            {/* Customer document heaed */}
             <Head>
                 <title>Sense {pageTitle ? `- ${pageTitle}` : undefined}</title>
                 <meta name='description' content={pageDescription}/>
             </Head>
 
             <Fragment>
-                <SenseMainHeader mainHeaderContent={mainHeaderContent}/>
+                {/* Sense main header */}
+                <SenseMainHeader/>
+
+                {/* dynamic page content */}
                 {children}
+
+                {/* Sense main footer */}
             </Fragment>
         </Fragment>
     )
@@ -33,7 +39,6 @@ const SenseMainLayout = (props) => {
 SenseMainLayout.propTypes = {
     pageTitle: PropTypes.string,
     pageDescription: PropTypes.string.isRequired,
-    mainHeaderContent: PropTypes.elementType.isRequired
 }
 
 export default SenseMainLayout;

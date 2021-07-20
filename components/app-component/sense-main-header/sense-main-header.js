@@ -1,6 +1,7 @@
 // dependency imports
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 
 // app component imports
@@ -14,9 +15,13 @@ import MainHeaderContentSection from './main-header-content-section';
  *  LCP component for the page
  *  performance optimization may require
  */
-const SenseMainHeader = props => {
-    const {mainHeaderContent} = props;
+const SenseMainHeader = () => {
+
+    // states from global store
+    const mainHeaderContent = useSelector(state => state.senseMainHeaderBackground.backgroundContent);
     const MainHeaderContent = mainHeaderContent;
+    
+    // jsx content
     return (
         <Fragment>
             {/* site contact bar */}
@@ -27,15 +32,13 @@ const SenseMainHeader = props => {
 
             {/* main header area */}
             <MainHeaderContentSection>
-                <MainHeaderContent/>
+                {mainHeaderContent && <MainHeaderContent/>}
             </MainHeaderContentSection>
         </Fragment>
     )
 }
 
 // props validation
-SenseMainHeader.propTypes = {
-    mainHeaderContent: PropTypes.elementType.isRequired
-}
+SenseMainHeader.propTypes = {}
 
 export default SenseMainHeader

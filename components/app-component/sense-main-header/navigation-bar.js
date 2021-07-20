@@ -124,15 +124,11 @@ const NavigationBar = () => {
     // side effects
     useEffect(() => {
         decideRoute();
-
+        
         // side effect on navbar on page scroll
-        let debounce_timer= 0;
-        window.onscroll = () => {
-            if(debounce_timer) window.clearTimeout(debounce_timer);
-            debounce_timer = window.setTimeout(() => {
-                handleNavbarAppearence();
-            }, 100);
-        };
+        window.addEventListener('scroll', scrollLimiter);
+        return () => {window.removeEventListener('scroll', scrollLimiter)};
+        
     }, [])
 
     
@@ -166,6 +162,15 @@ const NavigationBar = () => {
         }
     }
     const handleBackdropMenuOpen = () => dispatch(setBackdropNav(true));
+    const scrollLimiter = () => {
+        // limit the scroll event calling function for better performance
+        let debounce_timer= 0;
+        if(debounce_timer) window.clearTimeout(debounce_timer);
+        debounce_timer = window.setTimeout(() => {
+            handleNavbarAppearence();
+        }, 100);
+    }
+
 
     // jsx content
     return (

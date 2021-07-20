@@ -1,32 +1,33 @@
 // dependency imports
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from 'react-redux';
 
 // material ui components imports
 import { Box, Container} from '@material-ui/core';
-
 
 //custom component styles
 const useStyles = makeStyles(theme => ({
     mainHeaderConatiner:{
         ...theme.props.senseMainHeader.mainHeaderConatiner,
-        backgroundImage: "url('/images/sense-header-bg1.png')",
-        [theme.breakpoints.down('md')]:{
+        backgroundImage: ({mainHeaderBackgroundImage}) => `url("${mainHeaderBackgroundImage}")`,
+        [theme.breakpoints.down('md')]: {
             backgroundPosition: 'center center!important',
             height: '720px'
         },
         "&:before":{
             ...theme.props.senseMainHeader.afterAndBefore,
-            width: '65%',
             left: 0,
-            transform: 'matrix(1, 0.102, 0, 2, 0, 0)',
+            width: '65%',
+            transform: ({headerTrasnformMatrix1}) => headerTrasnformMatrix1,
         },
-        "&:after":{
+        "&:after": {
             ...theme.props.senseMainHeader.afterAndBefore,
             right: 0,
             width: '35%',
-            transform: 'matrix(1, -0.19, 0, 2, 0, 0)',
+            transform: ({headerTrasnformMatrix2}) => headerTrasnformMatrix2,
         }
     },
     overlay1:{
@@ -51,10 +52,39 @@ const useStyles = makeStyles(theme => ({
 /**
  *  large header panel in sense main header
  */
-const MainHeaderContentSection = props => {
-    const {children} = props;
-    const classes = useStyles();
+const MainHeaderContentSection = ({children}) => {
+    const router = useRouter();
 
+    // local states
+    const [headerTrasnformMatrix1, setHeaderTrasnformMatrix1] = useState('')
+    const [headerTrasnformMatrix2, setHeaderTrasnformMatrix2] = useState('')
+      
+    // states from global store
+    const mainHeaderBackgroundImage = useSelector(state => state.senseMainHeaderBackground.backgroundImage);
+    const props = {
+        mainHeaderBackgroundImage : mainHeaderBackgroundImage ? mainHeaderBackgroundImage : '',
+        headerTrasnformMatrix1 : headerTrasnformMatrix1,
+        headerTrasnformMatrix2: headerTrasnformMatrix2
+    } 
+    const classes = useStyles(props);
+
+    // side effects
+    useEffect(() => {
+        setTransformMatrix();
+    }, []);
+
+    // handler methods
+    const setTransformMatrix = () => {
+        if(router.asPath === '/'){
+            setHeaderTrasnformMatrix1('matrix(1, 0.102, 0, 2, 0, 0)');
+            setHeaderTrasnformMatrix2('matrix(1, -0.19, 0, 2, 0, 0)');
+        }else{
+            setHeaderTrasnformMatrix1('');
+            setHeaderTrasnformMatrix2('');
+        }
+    }
+
+    // jsx content
     return (
         <Fragment>
             <Box component='section' className={classes.mainHeaderConatiner}>

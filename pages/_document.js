@@ -12,16 +12,15 @@ class SenseDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-
           {/* app image preloading */}
           <link rel='preload' as='image' href='/images/sense-header-bg1.png'/>
+          <link rel='preload' as='image' href='/images/sense-header-bg2.png'/>
 
           {/* external font stylesheet */}
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={true}/>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100, 200,300,400,500,700&display=swap"/>
           <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet"></link>
-
         </Head>
 
         <body>
