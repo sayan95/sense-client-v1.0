@@ -46,7 +46,7 @@ const SenseSocialButton = props => {
 SenseSocialButton.propTypes = {
     icon: PropTypes.string.isRequired,
     bgColor: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired
+    href: PropTypes.string.isRequired,
 }
 
 export default SenseSocialButton

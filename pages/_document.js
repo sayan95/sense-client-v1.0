@@ -33,7 +33,6 @@ class SenseDocument extends Document {
 }
 
 SenseDocument.getInitialProps = async (ctx) => {
-
   const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
 

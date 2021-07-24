@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme => ({
         ...theme.props.senseMainHeader.navbar,
     },
     brand:{
-        ...theme.props.senseMainHeader.brand,
+        ...theme.props.senseMainHeader.navbarBrand,
+        fontSize: theme.typography.fontSizes.large,
         textShadow: `0 .1px 3px ${theme.palette.gray.dark}`,
     },
     navItemNormal:{
@@ -58,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     },
     navToggleMenuWhite: { color: theme.palette.common.white },
     navTogglemenuPrimary: {color: `${theme.palette.primary.main} !important`},
-    brandInBlue:{ color: theme.palette.primary.main },
+    brandInBlue:{ color: theme.palette.primary.main, textShadow: 'none!important' },
     navbarNav: {  marginLeft: 'auto', },
     indicator:{ background: 'transparent'},
     "@keyframes awakeNavbar":{
@@ -189,8 +190,8 @@ const NavigationBar = () => {
                     <Toolbar>
                         {/* Navbar brand holder */}
                         <Box component='div' display='flex' flexDirection='row' alignItems='center'>
-                            <Image src='/logo/sense_logo.png' alt='sense_logo' height={55} width={55} quality={100} priority/>
-                            <Typography variant='h5' classes={{ h5:classes.brand , h5:classes[navBrandRef.current]}}>
+                            <Image src='/logo/sense_logo.png' alt='sense_logo' height={65} width={65} quality={100} priority/>
+                            <Typography variant='h5' className={`${classes.brand} , ${classes[navBrandRef.current]}`}>
                                 Sense
                             </Typography>
                         </Box>

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 
 // app component imports
-import SenseMainHeader from '../components/app-component/sense-main-header/sense-main-header';
-
+import SenseMainHeader from '../components/ui/sense-main-header/sense-main-header';
+import SenseMainFooter from '../components/ui/sense-main-footer/sense-main-footer';
 
 /**
  *  Sense main layout component
@@ -21,7 +21,6 @@ const SenseMainLayout = (props) => {
                 <title>Sense {pageTitle ? `- ${pageTitle}` : undefined}</title>
                 <meta name='description' content={pageDescription}/>
             </Head>
-
             <Fragment>
                 {/* Sense main header */}
                 <SenseMainHeader/>
@@ -30,6 +29,7 @@ const SenseMainLayout = (props) => {
                 {children}
 
                 {/* Sense main footer */}
+                <SenseMainFooter/>
             </Fragment>
         </Fragment>
     )

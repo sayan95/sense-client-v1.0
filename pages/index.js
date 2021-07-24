@@ -10,17 +10,16 @@ import SenseMainLayout from '../layouts/sense-main-layout';
 import MainHeaderContent from '../components/app-component/sense-index-page-components/main-header-content/main-header-content';
 import { useDispatch } from 'react-redux';
 
-
 /**
  *  Sense main landing page
  *  This is the initial page for app showcase
  *  
  */
 const index = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   // side effect
-  useEffect(() => {
+  useEffect(async () => {
     setMainHeaderContent();
     setMainHeaderBackgroundImage();
   }, []);
@@ -39,8 +38,18 @@ const index = () => {
   // jsx page content
   return (
     <Fragment>
-      <SenseMainLayout  pageTitle='home' pageDescription='This is the main landing page'>
-       
+      <SenseMainLayout  
+        pageTitle='welcome to sense' 
+        pageDescription='This is the main landing page'
+      >
+      
+        <div style={{ position:'relative', height: '250px' }}>
+          Feature section - 
+          <pre>
+            
+          </pre>
+        </div>
+
       </SenseMainLayout>
     </Fragment>
   )
@@ -48,5 +57,5 @@ const index = () => {
 
 
 
-export default wrapper.withRedux(index);
+export default index;
 

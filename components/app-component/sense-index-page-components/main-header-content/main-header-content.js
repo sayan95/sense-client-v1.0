@@ -6,6 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box, Fab, Grid, Typography } from '@material-ui/core';
 import { PlayArrow } from '@material-ui/icons';
 
+// app component imports
+import SenseLazyAnimate from '../../../others/sense-lazy-animate';
+
 //custom component styles
 const useStyles = makeStyles(theme => ({
     headingContainer:{
@@ -64,12 +67,13 @@ const useStyles = makeStyles(theme => ({
         },
     },
     playButton:{
-        //position: 'relative',
-        boxShadow: '0 0 0 0 rgba(26, 64, 125, .5)',
-        width: '70px',
-        height:'70px',
         zIndex: 4,
+        height:'70px',
+        width: '70px',
         animation: '$pulse 1.9s infinite',
+        color: theme.palette.common.white,
+        boxShadow: '0 0 0 0 rgba(26, 64, 125, .5)',
+        background: theme.palette.senseGradient1.main,
     }, 
     "@keyframes pulse": {
         "0%": {
@@ -107,27 +111,32 @@ const MainHederContent = () => {
             <Grid container style={{ height: '100%' }}>
                 {/* Left pane of the content box */}
                 <Grid container item md={6} sm={9} xs={12} alignItems='center'>
-                    {/* Left pane of the content box */}
-                    <Box component='div' className={`animate__animated animate__fadeInUp ${classes.headingContainer}`}>
-                        <Typography variant='h5' classes={{ h5: classes.senseWelcomeNote }}>
-                            Welcome to Sense
-                        </Typography>
-                        <Typography variant='h3' classes={{ h3: classes.senseBizzMantra }}>
-                            Bringing Mental Health To All
-                        </Typography>
-                        <Typography variant='body1' classes={{ body1:classes.senseBriefNote }}>
-                            Far far away, behind the word mountains, 
-                            far from the countries Vokalia and Consonantia, 
-                            there live the blind texts. Separated they live 
-                            in Bookmarksgrove.
-                        </Typography>
-                    </Box>
+                    <SenseLazyAnimate
+                        initial={{ y: '30%', opacity: 0}}
+                        animate={{ y: '0', opacity: 1 }}
+                        transition={{ duration: .8 }}
+                    >
+                        <Box component='div' className={`animate__animated animate__fadeInUp ${classes.headingContainer}`}>
+                            <Typography variant='h5' classes={{ h5: classes.senseWelcomeNote }}>
+                                Welcome to Sense
+                            </Typography>
+                            <Typography variant='h3' classes={{ h3: classes.senseBizzMantra }}>
+                                Bringing Mental Health To All
+                            </Typography>
+                            <Typography variant='body1' classes={{ body1:classes.senseBriefNote }}>
+                                Far far away, behind the word mountains, 
+                                far from the countries Vokalia and Consonantia, 
+                                there live the blind texts. Separated they live 
+                                in Bookmarksgrove.
+                            </Typography>
+                        </Box>
+                    </SenseLazyAnimate>
                 </Grid>
                 
                 {/* Right pane of the content box */}
                 <Grid item md={6} sm={3} xs={12}>
                     <Box display='flex' alignItems='center' justifyContent='center' classes={{ root: classes.videoPlaycontainer }}>
-                        <Fab component='a' href='#' color='primary' size='large' classes={{ root: classes.playButton }}>
+                        <Fab component='a' href='#' size='large' classes={{ root: classes.playButton }}>
                             <PlayArrow style={{ fontSize: '30px' }}/>
                         </Fab>
                     </Box>

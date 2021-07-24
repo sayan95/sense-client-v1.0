@@ -9,7 +9,7 @@ export const senseMainHederTheme = {
   // full main header theme
   mainHeaderConatiner: {
     position: "relative",
-    height: "655px",
+    height: "635px",
     width: "100%",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -54,8 +54,8 @@ export const senseMainHederTheme = {
     left: 0,
   },
   navbarBrand: {
-    fontFamily: "Poppins",
-    fontWeight: 700,
+    fontFamily: "Roboto, ariel sans-sarif",
+    fontWeight: 500,
     textTransform: "capitalize",
     letterSpacing: "1px",
   },

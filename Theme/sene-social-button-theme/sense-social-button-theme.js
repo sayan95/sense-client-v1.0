@@ -6,6 +6,6 @@
 
 export const senseSocialButtonTheme = {
     color: 'white',
-    padding: '8px',
+    padding: '12px',
     marginRight: '10px',
 } 

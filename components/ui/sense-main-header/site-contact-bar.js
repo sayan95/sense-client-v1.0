@@ -5,7 +5,7 @@ import React, { Fragment } from 'react';
 import { Box, Container, Grid } from '@material-ui/core';
 
 // appplication component imports
-import SenseSocialButton from '../../ui/sense-social-button/sense-social-button';
+import SenseSocialButton from '../sense-social-button/sense-social-button';
 import { makeStyles, useTheme } from '@material-ui/styles';
 
 // custom component styling

@@ -30,7 +30,11 @@ const about = () => {
                 pageTitle='about us' 
                 pageDescription='This is the about page'
                 mainHeaderContent='hello'
-            />
+            >
+                <div style={{ position:'relative', height: '250px' }}>
+                    Feature section
+                </div>
+            </SenseMainLayout>
         </Fragment>
     )
 }

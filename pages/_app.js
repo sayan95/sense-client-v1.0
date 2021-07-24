@@ -1,14 +1,16 @@
 import {useEffect, Fragment} from 'react';
-import App from 'next/app';
 import {wrapper} from '../redux/store';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import theme from '../Theme/theme';
-import {AnimatePresence, LazyMotion, m, domAnimation} from 'framer-motion';
+import {AnimatePresence} from 'framer-motion';
 
 // material ui imports
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+
+// app component imports
+import SenseLazyAnimate from '../components/others/sense-lazy-animate';
 
 
 /**
@@ -19,7 +21,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
  */
 const SenseApp = (props) => {
   const { Component, pageProps, router } = props;
-  
 
   // side effects on roo level
   useEffect(() => {
@@ -29,7 +30,8 @@ const SenseApp = (props) => {
     }
   }, []);
 
-
+  
+  // global _app jsx 
   return (
     <Fragment>
       <Head>
@@ -44,18 +46,15 @@ const SenseApp = (props) => {
 
         {/* Applies page changes transition effect */}
         <AnimatePresence>
-          <LazyMotion features={domAnimation}>
-            <m.div key={router.route} initial={false}
-              initial={{ opacity:0 }}
-              animate={{ opacity:1 }}
-              exit={{ opacity: 0 }}
-              transition = {{ duration: 1}}
-            >
-              <Component {...pageProps} />
-            </m.div>
-          </LazyMotion>
+          <SenseLazyAnimate
+            key={router.route} 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition = {{ duration: .5}}
+          >
+            <Component {...pageProps} />
+          </SenseLazyAnimate>
         </AnimatePresence>
-
       </ThemeProvider>
 
     </Fragment>
@@ -67,6 +66,17 @@ SenseApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired,
 };
+
+//server side rendering
+SenseApp.getInitialProps = wrapper.getInitialAppProps(store => async ({Component, ctx}) => {
+  return {
+    pageProps: {
+      ...(Component.getInitialProps
+        ? await Component.getInitialProps(ctx)
+        : {}),
+    },
+  };
+})
 
 
 
