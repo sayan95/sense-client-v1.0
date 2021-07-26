@@ -9,7 +9,7 @@ export const senseMainHederTheme = {
   // full main header theme
   mainHeaderConatiner: {
     position: "relative",
-    height: "635px",
+    height: "660px",
     width: "100%",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",

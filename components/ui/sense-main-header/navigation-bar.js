@@ -56,6 +56,7 @@ const useStyles = makeStyles(theme => ({
         animation: "$awakeNavbar .3s",
         color: theme.palette.common.black,
         backgroundColor: theme.palette.common.white,
+        boxShadow: theme.palette.senseMatShadow.main,
     },
     navToggleMenuWhite: { color: theme.palette.common.white },
     navTogglemenuPrimary: {color: `${theme.palette.primary.main} !important`},

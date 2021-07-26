@@ -53,6 +53,9 @@ const theme = createTheme({
         ${indigo[500]} 56%, 
         ${deepPurple[300]} 100%)`,
       contrastText: '#fff!important'
+    },
+    senseMatShadow:{
+      main: '0 2px 25px -16px rgb(0 0 0 / 15%)'
     }
   },
   
@@ -83,6 +86,7 @@ const theme = createTheme({
     senseBackdropNavMenu: appTheme.senseBackdropNavMenuTheme,
     senseSocialButton: appTheme.senseSocialButtonTheme,
     senseMainFooter: appTheme.senseMainFooterTheme,
+    senseService : appTheme.senseServiceTheme,
   },
 
   typography: {

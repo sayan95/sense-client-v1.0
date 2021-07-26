@@ -7,20 +7,27 @@ import { LazyMotion, domAnimation, m } from 'framer-motion';
 /**
  *  HOC for lazy animate
  */
-const SenseLazyAnimate = ({children, initial, animate, transition, exit, keyProp}) => {
+const SenseLazyAnimate = ({children, applyCondition, initial, animate, transition, exit, keyProp}) => {
     return (
         <Fragment>
-            <LazyMotion features={domAnimation}> 
-                <m.div 
-                    key={keyProp}
-                    initial={initial}
-                    animate = {animate}
-                    exit = {exit}
-                    transition={transition}
-                >
-                    {children}
-                </m.div>
-            </LazyMotion>
+            {applyCondition 
+            ?   (<LazyMotion features={domAnimation}> 
+                    <m.div 
+                        key={keyProp}
+                        initial={initial}
+                        animate = {animate}
+                        exit = {exit}
+                        transition={transition}
+                    >
+                        {children}
+                    </m.div>
+                </LazyMotion>) 
+            :   (
+                    <Fragment>
+                        {children}
+                    </Fragment>
+                )
+            }
         </Fragment>
     )
 }
@@ -32,10 +39,12 @@ SenseLazyAnimate.defaultProps = {
     animate : null,
     exit: null,
     transition : null,
+    applyCondition: true,
 }
 
 // props validation
 SenseLazyAnimate.propTypes = {
+    applyCondition: PropTypes.bool,
     key: PropTypes.any,
     initial : PropTypes.object,
     animate : PropTypes.object,
